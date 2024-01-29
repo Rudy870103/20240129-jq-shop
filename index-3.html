@@ -35,41 +35,29 @@
         <li><button>7</button></li>
         <li><button>8</button></li>
       </ul>
+      <hr>
     </div>
     <table class="table">
-      <tr>
-        <th>產品</th>
-        <th>單價</th>
-        <th>數量</th>
-        <th>總價</th>
-        <th></th>
-      </tr>
       <tr class="product">
         <td><img src="./img/1.png" alt="" width="20%"></td>
         <td>888</td>
         <td>1</td>
         <td>888</td>
-        <td><button><i class="fa-solid fa-trash"></i></button></td>
+        <td><button class="del"><i class="fa-solid fa-trash"></i></button></td>
       </tr>
       <tr class="product">
         <td><img src="./img/2.png" alt="" width="20%"></td>
         <td>1888</td>
         <td>1</td>
         <td>1888</td>
-        <td><button><i class="fa-solid fa-trash"></i></button></td>
+        <td><button class="del"><i class="fa-solid fa-trash"></i></button></td>
       </tr>
       <tr class="product">
         <td><img src="./img/3.png" alt="" width="20%"></td>
         <td>8888</td>
         <td>1</td>
         <td>8888</td>
-        <td><button><i class="fa-solid fa-trash"></i></button></td>
-      </tr>
-      <tr>
-        <td colspan="3"></td>
-        <td colspan="2"><button type="submit" id="btn">結帳</button>&nbsp&nbsp&nbsp&nbsp
-          <input type="text" name="total" id="total">
-        </td>
+        <td><button class="del"><i class="fa-solid fa-trash"></i></button></td>
       </tr>
     </table>
     <!-- <button type="submit" name="count" id="count" >計算</button> -->
@@ -86,7 +74,7 @@
       let sball=$('.sball');
       let product=$('.product');
       let table=$('.table');
-      console.log(product);
+      let del=$('.del')
       product.hide();
 
       sball.click(function(){
@@ -95,12 +83,24 @@
         <td>888</td>
         <td>1</td>
         <td>888</td>
-        <td><button><i class="fa-solid fa-trash"></i></button></td>
+        <td><button class="del"><i class="fa-solid fa-trash"></i></button></td>
       </tr>`;
 
       table.append(list);
-      })
+      
     })
+
+    table.on('click', '.del', function () {
+      console.log($(this).parent().parent()); 
+      let thisTr= $(this).parent().parent();
+      thisTr.remove();
+      // $(this).closest('tr').remove();
+      });
+    
+    })
+      
+      
+    
   </script>
 </body>
 
