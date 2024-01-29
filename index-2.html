@@ -34,9 +34,9 @@
   <div class="container">
     <div class="row">
       <ul>
-        <li><button>1顆寶貝球</button></li>
-        <li><button>1顆高級球</button></li>
-        <li><button>1顆大師球</button></li>
+        <li><button class="sball">1顆寶貝球</button></li>
+        <li><button class="hball">1顆高級球</button></li>
+        <li><button class="pball">1顆大師球</button></li>
         <li><button>4</button></li>
         <li><button>5</button></li>
         <li><button>6</button></li>
@@ -98,8 +98,10 @@
       let productTotal3 = $('#productTotal3');
       let btn = $('#btn');
       let total = $('#total');
+      let sball=$('.sball');
+      let hball=$('.hball');
+      let pball=$('.pball');
      
-
 
       productPrice.on('input', count);
       productCount.on('input', count);
@@ -111,7 +113,20 @@
       productCount3.on('input', count3);
       
      
-      
+      sball.click(function(){
+        productCount.val(1);
+        count();
+      })
+      hball.click(function(){
+        productCount2.val(1);
+        count2();
+      })
+      pball.click(function(){
+        productCount3.val(1);
+        count3();
+      })
+
+
       btn.on('click', function () {
         total.val(parseInt(productTotal.val()) + parseInt(productTotal2.val()) + parseInt(productTotal3.val()));
       });
