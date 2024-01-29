@@ -26,6 +26,7 @@
 
   td {
     width: 25%;
+    text-align: center;
   }
 
   ul {
@@ -56,6 +57,10 @@
     text-align: right;
     margin-top: 20px;
   }
+  td input{
+    margin-top: 30%;
+  }
+ 
 </style>
 
 <body>
@@ -69,21 +74,21 @@
         <li><button class="pokemonlegend">傳說可夢</button></li>
       </ul>
     </div>
-    <table class="table">
-      <tr>
+    <table class="table table-striped">
+      <tr class="text-center">
         <td>產品</td>
         <td>單價</td>
         <td>數量</td>
         <td>總價</td>
       </tr>
       <tr>
-        <td><img src="./img/1.png" alt="" width="80%"></td>
+        <td class="text-center"><img src="./img/1.png" alt="" width="80%"></td>
         <td><input type="text" name="productPrice" id="productPrice1" value="888" disabled></td>
         <td><input type="number" name="productCount" id="productCount1" value="0"></td>
         <td><input type="text" name="productTotal" id="productTotal1" value="0" disabled></td>
       </tr>
       <tr>
-        <td><img src="./img/2.png" alt="" width="80%"></td>
+        <td class="text-center"><img src="./img/2.png" alt="" width="80%"></td>
         <td><input type="text" name="productPrice2" id="productPrice2" value="1888" disabled></td>
         <td><input type="number" name="productCount2" id="productCount2" value="0"></td>
         <td><input type="text" name="productTotal2" id="productTotal2" value="0" disabled></td>
@@ -148,11 +153,11 @@
 
       pball.click(function () {
         let pballLis = `<tr name='pball'>
-        <td><img src="./img/3.png" alt="" width="80%"></td>
+        <td class="text-center"><img src="./img/3.png" alt="" width="80%"></td>
         <td><input type="text" name="productPrice3" id="productPrice3" value="18888" readonly></td>
         <td><input type="number" name="productCount3" id="productCount3" value="1" readonly></td>
-        <td><input type="text" name="productTotal3" id="productTotal3" value="18888" readonly></td>
-        <td><button class="del"><i class="fa-solid fa-trash"></i></button></td>
+        <td><input type="text" name="productTotal3" id="productTotal3" value="18888" readonly>
+          <button class="del"><i class="fa-solid fa-trash"></i></button></td>
       </tr>`
         table.append(pballLis)
         pball.hide();
@@ -163,8 +168,8 @@
         <td><img src="./img/pokemondream.png" alt="" width="80%"></td>
         <td><input type="text" name="productPrice4" id="productPrice4" value="8888" readonly></td>
         <td><input type="number" name="productCount4" id="productCount4" value="1" readonly></td>
-        <td><input type="text" name="productTotal4" id="productTotal4" value="8888" readonly></td>
-        <td><button class="del"><i class="fa-solid fa-trash"></i></button></td>
+        <td><input type="text" name="productTotal4" id="productTotal4" value="8888" readonly>
+          <button class="del"><i class="fa-solid fa-trash"></i></button></td>
       </tr>`
         table.append(pokemondreamLis);
         pokemondream.hide();
@@ -175,8 +180,8 @@
         <td><img src="./img/pokemonlegend.png" alt="" width="80%"></td>
         <td><input type="text" name="productPrice5" id="productPrice5" value="8888" readonly></td>
         <td><input type="number" name="productCount5" id="productCount5" value="1" readonly></td>
-        <td><input type="text" name="productTotal5" id="productTotal5" value="8888" readonly></td>
-        <td><button class="del"><i class="fa-solid fa-trash"></i></button></td>
+        <td><input type="text" name="productTotal5" id="productTotal5" value="8888" readonly>
+          <button class="del"><i class="fa-solid fa-trash"></i></button></td>
       </tr>`
         table.append(pokemonlegendLis)
         pokemonlegend.hide();
