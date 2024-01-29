@@ -58,9 +58,9 @@
       <ul>
         <li><button class="sball">1顆寶貝球</button></li>
         <li><button class="hball">1顆高級球</button></li>
-        <li><button class="pball">1顆大師球</button></li>
-        <li><button>幻系寶可夢</button></li>
-        <li><button>傳說可夢</button></li>
+        <li><button class="pball">大師球</button></li>
+        <li><button class="pokemondream">幻系寶可夢</button></li>
+        <li><button class="pokemonlegend">傳說可夢</button></li>
       </ul>
     </div>
     <table class="table">
@@ -110,6 +110,10 @@
       let sball = $('.sball');
       let hball = $('.hball');
       let pball = $('.pball');
+      let table = $('.table')
+      let pokemondream = $('.pokemondream');
+      let pokemonlegend = $('.pokemonlegend');
+
 
 
 
@@ -137,15 +141,39 @@
       })
 
       pball.click(function () {
-        let table = $('.table')
-        let pballLis = `<tr>
+        let pballLis = `<tr name='pball'>
         <td><img src="./img/3.png" alt="" width="80%"></td>
-        <td><input type="text" name="productPrice3" id="productPrice3" value="8888"></td>
-        <td><input type="number" name="productCount3" id="productCount3" value="0"></td>
-        <td><input type="text" name="productTotal3" id="productTotal3" value="0"></td>
+        <td><input type="text" name="productPrice3" id="productPrice3" value="18888"></td>
+        <td><input type="number" name="productCount3" id="productCount3" value="1"></td>
+        <td><input type="text" name="productTotal3" id="productTotal3" value="18888"></td>
+        <td><button class="del"><i class="fa-solid fa-trash"></i></button></td>
       </tr>`
       table.append(pballLis)
       pball.hide();
+      })
+
+      pokemondream.click(function () {
+        let pokemondreamLis = `<tr name='pokemondream'>
+        <td><img src="./img/pokemondream.png" alt="" width="80%"></td>
+        <td><input type="text" name="pokemondream" id="pokemondream" value="8888" readonly></td>
+        <td><input type="number" name="pokemondream" id="pokemondream" value="1" readonly></td>
+        <td><input type="text" name="pokemondream" id="pokemondream" value="8888" readonly></td>
+        <td><button class="del"><i class="fa-solid fa-trash"></i></button></td>
+      </tr>`
+      table.append(pokemondreamLis);
+      pokemondream.hide();
+      })
+
+      pokemonlegend.click(function () {
+        let pokemonlegendLis = `<tr name='pokemonlegend'>
+        <td><img src="./img/pokemonlegend.png" alt="" width="80%"></td>
+        <td><input type="text" name="pokemonlegend" id="pokemonlegend" value="8888" readonly></td>
+        <td><input type="number" name="pokemonlegend" id="pokemonlegend" value="1" readonly></td>
+        <td><input type="text" name="pokemonlegend" id="pokemonlegend" value="8888" readonly></td>
+        <td><button class="del"><i class="fa-solid fa-trash"></i></button></td>
+      </tr>`
+      table.append(pokemonlegendLis)
+      pokemonlegend.hide();
       })
       
 
@@ -153,6 +181,16 @@
       btn.on('click', function () {
         total.val(parseInt(productTotal.val()) + parseInt(productTotal2.val()));
       });
+
+      table.on('click','.del',function(){
+        let delThis=$(this).parent().parent();
+        // console.log(delThis);
+        let btnName=delThis.attr('name');
+        let thisBtn=$('.'+btnName);
+        console.log(thisBtn);
+        delThis.remove();
+        thisBtn.show();
+      })
 
       function count() {
         productTotal.val(productPrice.val() * productCount.val());
