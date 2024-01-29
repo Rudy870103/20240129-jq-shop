@@ -13,38 +13,54 @@
 
 </head>
 <style>
-  table {
-    border: 1px solid black;
+  .container {
+    height: 2000px;
+  }
+
+  .table {
+    width: 80%;
+    margin: auto;
+    margin-top: 40px;
   }
 
   td {
     width: 25%;
-    border: 1px solid black;
   }
-  ul{
-    display:flex;
+
+  ul {
+    display: flex;
+    justify-content: center;
   }
-  li{
-    width: 20%;
+
+  li {
     list-style: none;
+    font-size: 20px;
+  }
+
+  button:hover {
+    background-color: aqua;
+  }
+
+  .bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
   }
 </style>
 
 <body>
   <div class="container">
-    <div class="row">
+    <div class="bar">
       <ul>
         <li><button class="sball">1顆寶貝球</button></li>
         <li><button class="hball">1顆高級球</button></li>
         <li><button class="pball">1顆大師球</button></li>
-        <li><button>4</button></li>
-        <li><button>5</button></li>
-        <li><button>6</button></li>
-        <li><button>7</button></li>
-        <li><button>8</button></li>
+        <li><button>幻系寶可夢</button></li>
+        <li><button>傳說可夢</button></li>
       </ul>
     </div>
-    <table>
+    <table class="table">
       <tr>
         <td>產品</td>
         <td>單價</td>
@@ -52,30 +68,23 @@
         <td>總價</td>
       </tr>
       <tr>
-        <td><img src="./img/1.png" alt="" width="100%"></td>
+        <td><img src="./img/1.png" alt="" width="80%"></td>
         <td><input type="text" name="productPrice" id="productPrice" value="888"></td>
         <td><input type="number" name="productCount" id="productCount" value="0"></td>
-        <td><input type="text" name="productTotal" id="productTotal"></td>
+        <td><input type="text" name="productTotal" id="productTotal" value="0"></td>
       </tr>
       <tr>
-        <td><img src="./img/2.png" alt="" width="100%"></td>
+        <td><img src="./img/2.png" alt="" width="80%"></td>
         <td><input type="text" name="productPrice2" id="productPrice2" value="1888"></td>
         <td><input type="number" name="productCount2" id="productCount2" value="0"></td>
-        <td><input type="text" name="productTotal2" id="productTotal2"></td>
-      </tr>
-      <tr>
-        <td><img src="./img/3.png" alt="" width="100%"></td>
-        <td><input type="text" name="productPrice3" id="productPrice3" value="8888"></td>
-        <td><input type="number" name="productCount3" id="productCount3" value="0"></td>
-        <td><input type="text" name="productTotal3" id="productTotal3"></td>
-      </tr>
-      <tr>
-        <td colspan="2"></td>
-        <td colspan="2"><button type="submit" id="btn">結帳</button>&nbsp&nbsp&nbsp&nbsp
-          <input type="text" name="total" id="total">
-        </td>
+        <td><input type="text" name="productTotal2" id="productTotal2" value="0"></td>
       </tr>
     </table>
+    <div class="total">
+      <button type="submit" id="btn">結帳</button>&nbsp&nbsp&nbsp&nbsp
+      <input type="text" name="total" id="total">
+
+    </div class="total">
     <!-- <button type="submit" name="count" id="count" >計算</button> -->
   </div>
 
@@ -93,15 +102,14 @@
       let productPrice2 = $('#productPrice2');
       let productCount2 = $('#productCount2');
       let productTotal2 = $('#productTotal2');
-      let productPrice3 = $('#productPrice3');
-      let productCount3 = $('#productCount3');
-      let productTotal3 = $('#productTotal3');
       let btn = $('#btn');
       let total = $('#total');
-      let sball=$('.sball');
-      let hball=$('.hball');
-      let pball=$('.pball');
-     
+      let sball = $('.sball');
+      let hball = $('.hball');
+      let pball = $('.pball');
+
+
+
 
       productPrice.on('input', count);
       productCount.on('input', count);
@@ -109,32 +117,36 @@
       productPrice2.on('input', count2);
       productCount2.on('input', count2);
 
-      productPrice3.on('input', count3);
-      productCount3.on('input', count3);
-      
-      let sn=0;
-      let hn=0;
-      let pn=0;
 
-      sball.click(function(){
+      let sn = 0;
+      let hn = 0;
+      let pn = 0;
+
+      sball.click(function () {
         sn++;
         productCount.val(sn);
         count();
       })
-      hball.click(function(){
+      hball.click(function () {
         hn++;
         productCount2.val(hn);
         count2();
       })
-      pball.click(function(){
-        pn++;
-        productCount3.val(pn);
-        count3();
+
+      pball.click(function () {
+        let table = $('.table')
+        let pballLis = `<tr>
+        <td><img src="./img/3.png" alt="" width="80%"></td>
+        <td><input type="text" name="productPrice3" id="productPrice3" value="8888"></td>
+        <td><input type="number" name="productCount3" id="productCount3" value="0"></td>
+        <td><input type="text" name="productTotal3" id="productTotal3" value="0"></td>
+      </tr>`
+      table.append(pballLis)
       })
 
 
       btn.on('click', function () {
-        total.val(parseInt(productTotal.val()) + parseInt(productTotal2.val()) + parseInt(productTotal3.val()));
+        total.val(parseInt(productTotal.val()) + parseInt(productTotal2.val()));
       });
 
       function count() {
@@ -145,9 +157,6 @@
         productTotal2.val(productPrice2.val() * productCount2.val());
       }
 
-      function count3() {
-        productTotal3.val(productPrice3.val() * productCount3.val());
-      }
 
     })
   </script>
