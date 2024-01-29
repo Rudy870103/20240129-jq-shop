@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<style>
+  table {
+    border: 1px solid black;
+  }
+
+  td {
+    width: 25%;
+    border: 1px solid black;
+  }
+  ul{
+    display:flex;
+  }
+  li{
+    width: 20%;
+    list-style: none;
+  }
+</style>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <ul>
+        <li><button>1顆寶貝球</button></li>
+        <li><button>1顆高級球</button></li>
+        <li><button>1顆大師球</button></li>
+        <li><button>4</button></li>
+        <li><button>5</button></li>
+        <li><button>6</button></li>
+        <li><button>7</button></li>
+        <li><button>8</button></li>
+      </ul>
+    </div>
+    <table>
+      <tr>
+        <td>產品</td>
+        <td>單價</td>
+        <td>數量</td>
+        <td>總價</td>
+      </tr>
+      <tr>
+        <td><img src="./img/1.png" alt="" width="100%"></td>
+        <td><input type="text" name="productPrice" id="productPrice" value="888"></td>
+        <td><input type="number" name="productCount" id="productCount" value="0"></td>
+        <td><input type="text" name="productTotal" id="productTotal"></td>
+      </tr>
+      <tr>
+        <td><img src="./img/2.png" alt="" width="100%"></td>
+        <td><input type="text" name="productPrice2" id="productPrice2" value="1888"></td>
+        <td><input type="number" name="productCount2" id="productCount2" value="0"></td>
+        <td><input type="text" name="productTotal2" id="productTotal2"></td>
+      </tr>
+      <tr>
+        <td><img src="./img/3.png" alt="" width="100%"></td>
+        <td><input type="text" name="productPrice3" id="productPrice3" value="8888"></td>
+        <td><input type="number" name="productCount3" id="productCount3" value="0"></td>
+        <td><input type="text" name="productTotal3" id="productTotal3"></td>
+      </tr>
+      <tr>
+        <td colspan="2"></td>
+        <td colspan="2"><button type="submit" id="btn">結帳</button>&nbsp&nbsp&nbsp&nbsp
+          <input type="text" name="total" id="total">
+        </td>
+      </tr>
+    </table>
+    <!-- <button type="submit" name="count" id="count" >計算</button> -->
+  </div>
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    $(document).ready(function () {
+      let productPrice = $('#productPrice');
+      let productCount = $('#productCount');
+      let productTotal = $('#productTotal');
+      let productPrice2 = $('#productPrice2');
+      let productCount2 = $('#productCount2');
+      let productTotal2 = $('#productTotal2');
+      let productPrice3 = $('#productPrice3');
+      let productCount3 = $('#productCount3');
+      let productTotal3 = $('#productTotal3');
+      let btn = $('#btn');
+      let total = $('#total');
+     
+
+
+      productPrice.on('input', count);
+      productCount.on('input', count);
+
+      productPrice2.on('input', count2);
+      productCount2.on('input', count2);
+
+      productPrice3.on('input', count3);
+      productCount3.on('input', count3);
+      
+     
+      
+      btn.on('click', function () {
+        total.val(parseInt(productTotal.val()) + parseInt(productTotal2.val()) + parseInt(productTotal3.val()));
+      });
+
+      function count() {
+        productTotal.val(productPrice.val() * productCount.val());
+      }
+
+      function count2() {
+        productTotal2.val(productPrice2.val() * productCount2.val());
+      }
+
+      function count3() {
+        productTotal3.val(productPrice3.val() * productCount3.val());
+      }
+
+    })
+  </script>
+</body>
+
+</html>
