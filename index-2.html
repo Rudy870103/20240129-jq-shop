@@ -47,8 +47,9 @@
     left: 0;
     right: 0;
   }
-  input:disabled{
-    color:rgb(0, 17, 255);
+
+  input:disabled {
+    color: rgb(0, 17, 255);
   }
 </style>
 
@@ -72,9 +73,9 @@
       </tr>
       <tr>
         <td><img src="./img/1.png" alt="" width="80%"></td>
-        <td><input type="text" name="productPrice" id="productPrice" value="888" disabled></td>
-        <td><input type="number" name="productCount" id="productCount" value="0"></td>
-        <td><input type="text" name="productTotal" id="productTotal" value="0" disabled></td>
+        <td><input type="text" name="productPrice" id="productPrice1" value="888" disabled></td>
+        <td><input type="number" name="productCount" id="productCount1" value="0"></td>
+        <td><input type="text" name="productTotal" id="productTotal1" value="0" disabled></td>
       </tr>
       <tr>
         <td><img src="./img/2.png" alt="" width="80%"></td>
@@ -99,9 +100,9 @@
 
   <script>
     $(document).ready(function () {
-      let productPrice = $('#productPrice');
-      let productCount = $('#productCount');
-      let productTotal = $('#productTotal');
+      let productPrice1 = $('#productPrice1');
+      let productCount1 = $('#productCount1');
+      let productTotal1 = $('#productTotal1');
       let productPrice2 = $('#productPrice2');
       let productCount2 = $('#productCount2');
       let productTotal2 = $('#productTotal2');
@@ -118,8 +119,8 @@
 
 
 
-      productPrice.on('input', count);
-      productCount.on('input', count);
+      productPrice1.on('input', count);
+      productCount1.on('input', count);
 
       productPrice2.on('input', count2);
       productCount2.on('input', count2);
@@ -131,7 +132,7 @@
 
       sball.click(function () {
         sn++;
-        productCount.val(sn);
+        productCount1.val(sn);
         count();
       })
       hball.click(function () {
@@ -143,57 +144,69 @@
       pball.click(function () {
         let pballLis = `<tr name='pball'>
         <td><img src="./img/3.png" alt="" width="80%"></td>
-        <td><input type="text" name="productPrice3" id="productPrice3" value="18888"></td>
-        <td><input type="number" name="productCount3" id="productCount3" value="1"></td>
-        <td><input type="text" name="productTotal3" id="productTotal3" value="18888"></td>
+        <td><input type="text" name="productPrice3" id="productPrice3" value="18888" readonly></td>
+        <td><input type="number" name="productCount3" id="productCount3" value="1" readonly></td>
+        <td><input type="text" name="productTotal3" id="productTotal3" value="18888" readonly></td>
         <td><button class="del"><i class="fa-solid fa-trash"></i></button></td>
       </tr>`
-      table.append(pballLis)
-      pball.hide();
+        table.append(pballLis)
+        pball.hide();
       })
 
       pokemondream.click(function () {
         let pokemondreamLis = `<tr name='pokemondream'>
         <td><img src="./img/pokemondream.png" alt="" width="80%"></td>
-        <td><input type="text" name="pokemondream" id="pokemondream" value="8888" readonly></td>
-        <td><input type="number" name="pokemondream" id="pokemondream" value="1" readonly></td>
-        <td><input type="text" name="pokemondream" id="pokemondream" value="8888" readonly></td>
+        <td><input type="text" name="productPrice4" id="productPrice4" value="8888" readonly></td>
+        <td><input type="number" name="productCount4" id="productCount4" value="1" readonly></td>
+        <td><input type="text" name="productTotal4" id="productTotal4" value="8888" readonly></td>
         <td><button class="del"><i class="fa-solid fa-trash"></i></button></td>
       </tr>`
-      table.append(pokemondreamLis);
-      pokemondream.hide();
+        table.append(pokemondreamLis);
+        pokemondream.hide();
       })
 
       pokemonlegend.click(function () {
         let pokemonlegendLis = `<tr name='pokemonlegend'>
         <td><img src="./img/pokemonlegend.png" alt="" width="80%"></td>
-        <td><input type="text" name="pokemonlegend" id="pokemonlegend" value="8888" readonly></td>
-        <td><input type="number" name="pokemonlegend" id="pokemonlegend" value="1" readonly></td>
-        <td><input type="text" name="pokemonlegend" id="pokemonlegend" value="8888" readonly></td>
+        <td><input type="text" name="productPrice5" id="productPrice5" value="8888" readonly></td>
+        <td><input type="number" name="productCount5" id="productCount5" value="1" readonly></td>
+        <td><input type="text" name="productTotal5" id="productTotal5" value="8888" readonly></td>
         <td><button class="del"><i class="fa-solid fa-trash"></i></button></td>
       </tr>`
-      table.append(pokemonlegendLis)
-      pokemonlegend.hide();
+        table.append(pokemonlegendLis)
+        pokemonlegend.hide();
       })
-      
+
 
 
       btn.on('click', function () {
-        total.val(parseInt(productTotal.val()) + parseInt(productTotal2.val()));
+        let allProductTotal = 0;
+
+        // 加總所有總價
+        table.find('tr').each(function () {
+          let productTotalInput = $(this).find('[name^="productTotal"]');
+          if (productTotalInput.length > 0) {
+            allProductTotal += parseInt(productTotalInput.val()) || 0;
+          }
+        });
+
+        // 顯示總價
+        total.val(allProductTotal);
       });
 
-      table.on('click','.del',function(){
-        let delThis=$(this).parent().parent();
+
+      table.on('click', '.del', function () {
+        let delThis = $(this).parent().parent();
         // console.log(delThis);
-        let btnName=delThis.attr('name');
-        let thisBtn=$('.'+btnName);
+        let btnName = delThis.attr('name');
+        let thisBtn = $('.' + btnName);
         console.log(thisBtn);
         delThis.remove();
         thisBtn.show();
       })
 
       function count() {
-        productTotal.val(productPrice.val() * productCount.val());
+        productTotal1.val(productPrice1.val() * productCount1.val());
       }
 
       function count2() {
