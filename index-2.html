@@ -112,17 +112,23 @@
       productPrice3.on('input', count3);
       productCount3.on('input', count3);
       
-     
+      let sn=0;
+      let hn=0;
+      let pn=0;
+
       sball.click(function(){
-        productCount.val(1);
+        sn++;
+        productCount.val(sn);
         count();
       })
       hball.click(function(){
-        productCount2.val(1);
+        hn++;
+        productCount2.val(hn);
         count2();
       })
       pball.click(function(){
-        productCount3.val(1);
+        pn++;
+        productCount3.val(pn);
         count3();
       })
 
