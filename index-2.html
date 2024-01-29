@@ -47,6 +47,9 @@
     left: 0;
     right: 0;
   }
+  input:disabled{
+    color:rgb(0, 17, 255);
+  }
 </style>
 
 <body>
@@ -69,15 +72,15 @@
       </tr>
       <tr>
         <td><img src="./img/1.png" alt="" width="80%"></td>
-        <td><input type="text" name="productPrice" id="productPrice" value="888"></td>
+        <td><input type="text" name="productPrice" id="productPrice" value="888" disabled></td>
         <td><input type="number" name="productCount" id="productCount" value="0"></td>
-        <td><input type="text" name="productTotal" id="productTotal" value="0"></td>
+        <td><input type="text" name="productTotal" id="productTotal" value="0" disabled></td>
       </tr>
       <tr>
         <td><img src="./img/2.png" alt="" width="80%"></td>
-        <td><input type="text" name="productPrice2" id="productPrice2" value="1888"></td>
+        <td><input type="text" name="productPrice2" id="productPrice2" value="1888" disabled></td>
         <td><input type="number" name="productCount2" id="productCount2" value="0"></td>
-        <td><input type="text" name="productTotal2" id="productTotal2" value="0"></td>
+        <td><input type="text" name="productTotal2" id="productTotal2" value="0" disabled></td>
       </tr>
     </table>
     <div class="total">
@@ -142,7 +145,9 @@
         <td><input type="text" name="productTotal3" id="productTotal3" value="0"></td>
       </tr>`
       table.append(pballLis)
+      pball.hide();
       })
+      
 
 
       btn.on('click', function () {
